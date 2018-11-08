@@ -1,0 +1,20 @@
+{
+    "version": "0.1.0",
+    "name": "cordova-plugin-shealth",
+    "cordova_name": "Samsung Health Plugin Android only",
+    "description": "Retrieve step counter information from shealth on Samsung Android devices",
+    "license": "MIT",
+    "keywords": [
+        "android",
+        "stepcounter"
+    ],
+    "platforms": [
+        "android"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=4.0.0"
+        }
+    ]
+}

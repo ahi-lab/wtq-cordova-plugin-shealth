@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied.  See the License for the
+  specific language governing permissions and limitations
+  under the License.
+-->
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-samsunghealth" version="0.0.1">
+    <name>SamsungHealth</name>
+    <description>Samsung Health Plugin</description>
+    <author>Pushparaj Samant</author>
+    <license>MIT</license>
+    <keywords>shealth, gear</keywords>
+    <engines>
+        <engine name="cordova" version=">=4.0.0" />
+    </engines>
+    <js-module src="www/ShealthPlugin.js" name="ShealthPlugin">
+        <clobbers target="plugins.samsunghealth" />
+    </js-module>
+    <!-- android -->
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="ShealthPlugin">
+                <param name="android-package" value="com.cordova.shealth.ShealthPlugin" />
+                <!--<param name="onload" value="true" />-->
+            </feature>
+        </config-file>
+        <!-- <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service android:name="com.leotech.cordova.MisfitShineService" />
+        </config-file> -->
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <!--<uses-sdk android:minSdkVersion="18" android:targetSdkVersion="19" />//-->
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="./application">
+            <meta-data
+                android:name="com.samsung.android.health.permission.read"
+                android:value="com.samsung.health.step_count;com.samsung.shealth.step_daily_trend;com.samsung.health.sleep" />
+        </config-file>
+        <source-file src="src/android/ShealthPlugin.java" target-dir="src/com/cordova/shealth/" />
+        <source-file src="src/android/StepCountReader.java" target-dir="src/com/cordova/shealth/" />
+        <source-file src="src/android/samsung-health-data-v1.3.0.jar" target-dir="libs" framework="true" />
+        <source-file src="src/android/sdk-v1.0.0.jar" target-dir="libs" framework="true" />
+    </platform>
+</plugin>
